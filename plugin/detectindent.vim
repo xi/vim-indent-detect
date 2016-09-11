@@ -28,11 +28,8 @@ function! DetectIndent()
 		if line =~ '^	'
 			call SetIndent(0)
 			return
-		elseif line =~ '^    '
-			call SetIndent(1, 4)
-			return
-		elseif line =~ '^  '
-			call SetIndent(1, 2)
+		elseif line =~ '^ '
+			call SetIndent(1, strlen(matchstr(line, '^ \+')))
 			return
 		endif
 
