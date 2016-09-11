@@ -1,5 +1,5 @@
-let g:detectindent_preferred_indent = 2
-let g:detectindent_preferred_expandtab = 0
+let g:detectindent_preferred_indent = 4
+let g:detectindent_preferred_expandtab = 1
 
 function! SetIndent(...)
 	if a:0 < 1
