@@ -11,7 +11,7 @@ A Vim plugin for handeling indentation.
 	`Tabs [width]` commands.
 
 -	You can change the defaults by setting `g:detectindent_preferred_expandtab`
-	and `g:detectindent_preferred_expandtab`.
+	and `g:detectindent_preferred_indent`.
 
 Inspired by [detectindent](https://github.com/ciaranm/detectindent) and
 [vim-sleuth](https://github.com/tpope/vim-sleuth).
