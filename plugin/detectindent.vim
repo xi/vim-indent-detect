@@ -1,7 +1,11 @@
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
-set noexpandtab
+function! SetIndent(expand, width)
+	let &l:expandtab = a:expand
+	let &l:tabstop = a:width
+	let &l:shiftwidth = a:width
+	let &l:softtabstop = a:width
+endfunction
+
+call SetIndent(0, 2)
 
 function! MatchIndent()
 	let n = 1
@@ -10,13 +14,13 @@ function! MatchIndent()
 		let cur_line = getline(n)
 
 		if cur_line =~ '^	'
-			set ts=2 sw=2 sts=2 noet
+			call SetIndent(0, 2)
 			return
 		elseif cur_line =~ '^    '
-			set ts=4 sw=4 sts=4 et
+			call SetIndent(1, 4)
 			return
 		elseif cur_line =~ '^  '
-			set ts=2 sw=2 sts=2 et
+			call SetIndent(1, 2)
 			return
 		endif
 
@@ -24,8 +28,8 @@ function! MatchIndent()
 	endwhile
 endfunction
 
-command! Tabs set ts=2 sw=2 sts=2 noet
-command! Spaces set ts=4 sw=4 sts=4 et
-command! Spaces2 set ts=2 sw=2 sts=2 et
+command! Tabs call SetIndent(0, 2)
+command! Spaces call SetIndent(1, 4)
+command! Spaces2 call SetIndent(1, 2)
 
 autocmd BufNewFile,BufRead * call MatchIndent()
