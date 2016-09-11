@@ -39,8 +39,7 @@ function! DetectIndent()
 	call SetIndent()
 endfunction
 
-command! Tabs call SetIndent(0, 2)
-command! Spaces call SetIndent(1, 4)
-command! Spaces2 call SetIndent(1, 2)
+command! -nargs=? Tabs call SetIndent(0, <f-args>)
+command! -nargs=? Spaces call SetIndent(1, <f-args>)
 
 autocmd BufNewFile,BufRead * call DetectIndent()
