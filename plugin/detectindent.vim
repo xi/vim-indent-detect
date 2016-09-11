@@ -1,5 +1,9 @@
-let g:detectindent_preferred_indent = 4
-let g:detectindent_preferred_expandtab = 1
+if !exists('g:detectindent_preferred_indent')
+	let g:detectindent_preferred_indent = 4
+endif
+if !exists('g:detectindent_preferred_expandtab')
+	let g:detectindent_preferred_expandtab = 1
+endif
 
 function! SetIndent(...)
 	if a:0 < 1
