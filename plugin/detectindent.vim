@@ -1,11 +1,23 @@
-function! SetIndent(expand, width)
-	let &l:expandtab = a:expand
-	let &l:tabstop = a:width
-	let &l:shiftwidth = a:width
-	let &l:softtabstop = a:width
-endfunction
+let g:detectindent_preferred_indent = 2
+let g:detectindent_preferred_expandtab = 0
 
-call SetIndent(0, 2)
+function! SetIndent(...)
+	if a:0 < 1
+		let &l:expandtab = g:detectindent_preferred_expandtab
+	else
+		let &l:expandtab = a:1
+	endif
+
+	if a:0 < 2
+		let width = g:detectindent_preferred_indent
+	else
+		let width = a:2
+	endif
+
+	let &l:tabstop = width
+	let &l:shiftwidth = width
+	let &l:softtabstop = width
+endfunction
 
 function! MatchIndent()
 	let n = 1
@@ -14,7 +26,7 @@ function! MatchIndent()
 		let cur_line = getline(n)
 
 		if cur_line =~ '^	'
-			call SetIndent(0, 2)
+			call SetIndent(0)
 			return
 		elseif cur_line =~ '^    '
 			call SetIndent(1, 4)
@@ -26,6 +38,8 @@ function! MatchIndent()
 
 		let n = n + 1
 	endwhile
+
+	call SetIndent()
 endfunction
 
 command! Tabs call SetIndent(0, 2)
