@@ -19,7 +19,7 @@ function! SetIndent(...)
 	let &l:softtabstop = width
 endfunction
 
-function! MatchIndent()
+function! DetectIndent()
 	let n = 1
 
 	while n <= 50
@@ -46,4 +46,4 @@ command! Tabs call SetIndent(0, 2)
 command! Spaces call SetIndent(1, 4)
 command! Spaces2 call SetIndent(1, 2)
 
-autocmd BufNewFile,BufRead * call MatchIndent()
+autocmd BufNewFile,BufRead * call DetectIndent()
