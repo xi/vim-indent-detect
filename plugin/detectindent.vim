@@ -23,15 +23,15 @@ function! DetectIndent()
 	let n = 1
 
 	while n <= 50
-		let cur_line = getline(n)
+		let line = getline(n)
 
-		if cur_line =~ '^	'
+		if line =~ '^	'
 			call SetIndent(0)
 			return
-		elseif cur_line =~ '^    '
+		elseif line =~ '^    '
 			call SetIndent(1, 4)
 			return
-		elseif cur_line =~ '^  '
+		elseif line =~ '^  '
 			call SetIndent(1, 2)
 			return
 		endif
