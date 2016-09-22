@@ -32,7 +32,7 @@ function! DetectIndent()
 		if line =~ '^	'
 			call SetIndent(0)
 			return
-		elseif line =~ '^ '
+		elseif line =~ '^  '
 			call SetIndent(1, strlen(matchstr(line, '^ \+')))
 			return
 		endif
