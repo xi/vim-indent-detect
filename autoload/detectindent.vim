@@ -1,15 +1,6 @@
 function! detectindent#Set(...)
-	if a:0 < 1
-		let &l:expandtab = g:detectindent_preferred_expandtab
-	else
-		let &l:expandtab = a:1
-	endif
-
-	if a:0 < 2
-		let l:width = g:detectindent_preferred_indent
-	else
-		let l:width = a:2
-	endif
+	let &l:expandtab = get(a:, 1, g:detectindent_preferred_expandtab)
+	let l:width = get(a:, 2, g:detectindent_preferred_indent)
 
 	let &l:tabstop = l:width
 	let &l:shiftwidth = l:width
