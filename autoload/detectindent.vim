@@ -23,6 +23,4 @@ function! detectindent#Detect()
 
 		let l:n = l:n + 1
 	endwhile
-
-	call detectindent#Set()
 endfunction
