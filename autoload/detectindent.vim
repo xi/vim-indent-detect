@@ -4,7 +4,7 @@ function! detectindent#Set(expandtab, ...)
 
 	let &l:tabstop = l:width
 	let &l:shiftwidth = l:width
-	let &l:softtabstop = l:width
+	let &l:softtabstop = -1
 endfunction
 
 function! detectindent#Detect()
