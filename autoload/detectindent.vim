@@ -8,6 +8,10 @@ function! detectindent#Set(expandtab, ...)
 endfunction
 
 function! detectindent#Detect()
+	if get(b:, 'editorconfig_applied', 0)
+		return
+	endif
+
 	let l:n = 1
 
 	while l:n <= 50
